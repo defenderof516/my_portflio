@@ -1,471 +1,91 @@
-/* Start Global CSS For Whole Page*/
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
 
 :root{
-    --springGreen:#00ce79;
+  --bg:#0f0b08;
+  --card:#1a120d;
+  --accent1:#ff7a00; /* orange */
+  --accent2:#ffd54d; /* yellow */
+  --muted:#f4f0ea;
+  --glass: rgba(255,255,255,0.04);
 }
 
-*{
-    font-family: 'Nunito', sans-serif;
-    margin:0; padding:0;
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: none; border:none;
-    text-transform: capitalize;
-    transition: all .2s linear;
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;color:var(--muted);background:linear-gradient(180deg,#0b0b10 0%, #1b0b0b 60%);}
+a{color:inherit}
+.site-header{
+  position:fixed;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.6rem;background:linear-gradient(90deg,var(--card), rgba(26,18,13,0.6));backdrop-filter: blur(6px);z-index:40;border-bottom:1px solid rgba(255,255,255,0.03);
 }
+.brand{display:flex;align-items:center;gap:1rem}
+.brand-photo{width:64px;height:64px;border-radius:12px;object-fit:cover;border:3px solid var(--accent2)}
+.brand h1{font-size:1.4rem;margin:0;color:var(--accent2)}
+.brand .role{font-size:0.85rem;margin:0;color:#ffd;}
+.nav-toggle{display:none;background:transparent;border:none;color:var(--muted);font-size:1.4rem}
+.site-nav{display:flex;gap:1rem;align-items:center}
+.site-nav a{padding:.6rem .9rem;border-radius:8px;text-decoration:none;font-size:0.95rem;color:var(--muted)}
+.site-nav a.cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#1a0c02;font-weight:700}
+.btn-primary{display:inline-block;padding:.7rem 1rem;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#130803;text-decoration:none;font-weight:600}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:.6rem .9rem;border-radius:10px;color:var(--muted);text-decoration:none}
 
-*::selection{
-    background:var(--springGreen);
-    color:#333;
+/* layout */
+main{padding-top:88px;padding-bottom:60px;max-width:1180px;margin:0 auto;}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:3.2rem 1rem}
+.hero-left h2{font-size:2.2rem;margin:0 0 .4rem}
+.accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.6}
+.hero-right img{width:100%;height:320px;object-fit:cover;border-radius:14px;border:6px solid rgba(255,255,255,0.03)}
+.hero-cta{margin-top:1rem;display:flex;gap:.8rem;}
+
+/* Card sections */
+.card-section{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;padding:2rem 1rem}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:1.6rem;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.badges{margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.badges span{background:rgba(255,255,255,0.03);padding:.4rem .6rem;border-radius:8px;font-size:.85rem;color:var(--muted)}
+
+/* skills */
+.grid-section{padding:2rem 1rem}
+.section-title{font-size:1.6rem;margin:0 0 1rem;color:var(--accent2)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.skill{background:var(--glass);padding:1rem;border-radius:12px}
+
+/* projects */
+.projects-section{padding:2rem 1rem}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.project-card{background:#0f0b08;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column}
+.project-card img{width:100%;height:160px;object-fit:cover}
+.p-body{padding:1rem}
+.p-body h3{margin:0 0 .4rem;font-size:1.05rem}
+.p-body p{margin:0 0 .6rem;color:rgba(255,255,255,0.78);font-size:.95rem}
+.meta{font-size:.8rem;color:rgba(255,255,255,0.6)}
+.p-actions{margin-top:.6rem;display:flex;gap:.6rem}
+.btn-sm{padding:.5rem .7rem;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#130803;text-decoration:none;font-weight:700}
+.btn-outline{padding:.45rem .65rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);color:var(--muted);text-decoration:none}
+
+/* highlight card */
+.project-card.highlight{display:flex;align-items:center;justify-content:center;min-height:160px}
+
+/* contact */
+.contact-section{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:2rem 1rem}
+.contact-list{list-style:none;padding:0;margin:0}
+.contact-list a{color:var(--accent2)}
+.form-card .input{width:100%;padding:.9rem;border-radius:8px;margin:.6rem 0;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+/* footer */
+.site-footer{text-align:center;padding:2rem 1rem;color:rgba(255,255,255,0.5)}
+
+/* Responsive */
+@media (max-width:1000px){
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr 1fr}
+  .card-section{grid-template-columns:1fr}
+  .contact-section{grid-template-columns:1fr}
 }
-
-html{
-    font-size: 62.5%;
-    overflow-x: hidden;
+@media (max-width:640px){
+  .nav-toggle{display:block}
+  .site-nav{position:fixed;right:0;top:72px;background:linear-gradient(180deg,var(--card),#000);height:calc(100% - 72px);width:240px;flex-direction:column;padding:1rem;transform:translateX(110%);transition:transform .25s}
+  .site-nav.open{transform:translateX(0%)}
+  .hero{grid-template-columns:1fr;gap:1rem}
+  .projects-grid{grid-template-columns:1fr}
+  .brand h1{font-size:1rem}
+  .brand-photo{width:52px;height:52px}
 }
-
-html::-webkit-scrollbar{
-    width:1.4rem;
-}
-
-html::-webkit-scrollbar-track{
-    background:#222;
-}
-
-html::-webkit-scrollbar-thumb{
-    background:var(--springGreen);
-}
-
-body{
-    background:#111;
-    overflow-x: hidden;
-    padding-left: 35rem;
-}
-
-section{
-    min-height: 100vh;
-    padding:1rem;
-}
-/* End Global CSS For Whole Page*/
-
-/* Start Button CSS*/
-.btn{
-    padding:.7rem 3rem;
-    background:#333;
-    color:#fff;
-    cursor: pointer;
-    margin-top: 1rem;
-    font-size: 2rem;
-    border-radius: 5rem;
-}
-
-.btn i{
-    padding:0 .5rem;
-    font-size: 1.8rem;
-}
-
-.btn:hover{
-    background:var(--springGreen);
-    color: #1a1a1a
-}
-/* End Button CSS*/
-
-/* Start header Navbar Section CSS*/
-header{
-    position: fixed;
-    top:0; left:0;
-    z-index: 1000;
-    height:100%;
-    width:35rem;
-    background:#1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    text-align: center;
-}
-
-header .user img{
-    height:17rem;
-    width:17rem;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border:.7rem solid var(--springGreen);
-    margin-top: 15px;
-}
-
-header .user .name{
-    font-size: 3.5rem;
-    color:#fff;
-}
-.nickname{
-    font-size: 2.5rem;
-    color:#fff;
-}
-
-header .user .post{
-    font-size: 2rem;
-    color:#eee;
-}
-
-header .navbar{
-    width:100%;
-}
-
-header .navbar ul{
-    list-style: none;
-    padding:1rem 3rem;
-}
-
-
-header .navbar ul li a{
-    display: block;
-    padding:1rem;
-    margin:1.5rem 0;
-    background:#333;
-    color:#fff;
-    font-size: 2rem;
-    border-radius: 5rem;
-}
-
-header .navbar ul li a:hover{
-    background:var(--springGreen);
-    color: #1a1a1a;
-}
-
-#menu{
-    position: fixed;
-    top:2rem; right:2rem;
-    background:#333;
-    color:#fff;
-    cursor: pointer;
-    font-size: 2.5rem;
-    padding:1rem 1.5rem;
-    z-index: 1000;
-    display: none;
-}
-/* End header Navbar CSS*/
-
-/* Home Section CSS Start*/
-.home{
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    padding:0 15rem;
-}
-
-.home h3{
-    font-size: 2.5rem;
-    color:#fff;
-}
-
-.home h1{
-    font-size:5rem;
-    color:#fff;
-}
-
-.home h1 span{
-    color:var(--springGreen);
-}
-
-.home p{
-    font-size:2rem;
-    color:#eee;
-    padding: 1rem 0;
-}
-
-.heading{
-    text-align: center;
-    margin:0 6rem;
-    font-size: 4rem;
-    padding:1rem;
-    border-bottom: .1rem solid #fff4;
-    color:#fff;
-}
-
-.heading span{
-    color:var(--springGreen);
-}
-/* End Home Section CSS*/
-
-/*Start About Section CSS*/
-.about .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding:1rem 0;
-}
-
-.about .row .info{
-    flex:1 1 48rem;
-    padding:2rem 1rem;
-    padding-left: 6rem;
-}
-
-.about .row .info h3{
-    font-size: 2rem;
-    color:var(--springGreen);
-    padding:1rem 0;
-    font-weight: normal;
-}
-
-.about .row .info h3 span{
-    color:#eee;
-    padding:0 .5rem;
-}
-
-.about .row .counter{
-    flex:1 1 48rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.about .row .counter .box{
-    width:20rem;
-    background:#222;
-    text-align: center;
-    padding: 2rem;
-    margin:2rem;
-}
-
-.about .row .counter .box span{
-    font-size: 4rem;
-    color:var(--springGreen);
-}
-
-.about .row .counter .box h3{
-    font-size: 2rem;
-    color:#fff;
-}
-/* End About Section CSS */
-
-/* Start Education Section CSS */
-.education .box-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding:1rem 0;
-    padding-left: 3rem;
-}
-
-.education .box-container .box{
-    width:27rem;
-    margin:4rem 1rem;
-    padding-left: 4rem;
-    border-left: .2rem solid #fff;
-    position: relative;
-}
-
-.education .box-container .box span{
-    font-size: 1.3rem;
-    background:#222;
-    color:#fff;
-    border-radius: 5rem;
-    padding:.5rem 2.5rem;
-}
-
-.education .box-container .box h3{
-    font-size: 2rem;
-    color:#fff;
-    padding-top: 1.5rem;
-}
-
-.education .box-container .box p{
-    font-size: 1.4rem;
-    color:#eee;
-    padding: 1rem 0;
-}
-
-.education .box-container .box i{
-    position: absolute;
-    top:-1.5rem; left:-2.5rem;
-    height:5rem;
-    width: 5rem;
-    border-radius: 50%;
-    line-height: 5rem;
-    text-align: center;
-    font-size: 2rem;
-    color:#fff;
-    background:var(--springGreen);
-}
-/* End Education Section CSS */
-
-/* Start Portfolio Section CSS */
-.portfolio .box-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding:2rem 0;
-}
-
-.portfolio .box-container .box{
-    height: 20rem;
-    width:26rem;
-    border-radius: 1rem;
-    margin:2rem;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.portfolio .box-container .box img{
-    height:100%;
-    width:100%;
-    object-fit: cover;
-}
-
-.portfolio .box-container .box:hover img{
-    transform: scale(1.2);
-}
-/* End Portfolio Section CSS */
-
-/* Start Contact Section CSS */
-.contact .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.contact .row .content{
-    flex:1 1 30rem;
-    padding:4rem;
-    padding-bottom: 0;
-}
-
-.contact .row form{
-    flex:1 1 45rem;
-    padding:2rem;
-    margin:2rem;
-    margin-bottom: 4rem;
-}
-
-.contact .row form .box{
-    padding:1.5rem;
-    margin:1rem 0;
-    background:#3333;
-    color:#fff;
-    text-transform: none;
-    font-size: 1.7rem;
-    width:100%;
-}
-
-.contact .row form .box::placeholder{
-    text-transform: capitalize;
-}
-
-.contact .row form .message{
-    height: 15rem;
-    resize: none;
-}
-
-.contact .row .content .title{
-    text-transform: uppercase;
-    color:#fff;
-    font-size: 3rem;
-    padding-bottom: 2rem;
-}
-
-.contact .row .content .info h3{
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    color:#eee;
-    padding:1rem 0;
-    font-weight: normal;
-}
-
-.contact .row .content .info h3.lower{
-    text-transform: lowercase;
-}
-
-.contact .row .content .info h3 i{
-    padding-right: 1rem;
-    color:var(--springGreen);
-}
-/* End Contact Section CSS */
-
-/* Scroll For Top CSS */
-.top{
-    position: fixed;
-    bottom:7.5rem; right: 2rem;
-    z-index: 100;
-    display: none;
-}
-
-
-
-/* Responsive media queries  */
-
-@media (max-width:1200px){
-
-    html{
-        font-size: 55%;
-    }
-
-    .home{
-        padding:1rem 4rem;
-    }
-
-}
-
-@media (max-width:991px){
-
-   header{
-       left:-120%;
-   }
-
-   #menu{
-       display: block;
-   }
-
-   header.toggle{
-    left:0%;
-   }
-
-   body{
-       padding:0;
-   }
-
-}
-
-@media (max-width:768px){
-
-    html{
-        font-size: 50%;
-    }
- 
- }
-
-@media (max-width:400px){
-
-    header{
-        width: 100vw;
-    }
-
-    .heading{
-        margin:0 3rem;
-    }
-
-    .about .row .counter .box{
-        width: 100%;
-    }
- 
-    .education .box-container .box{
-        width:100%;
-    }
-
-    .portfolio .box-container .box{
-        width:100%;
-    }
-
-    .contact .row form{
-        margin:3rem 0;
-    }
-
- }
